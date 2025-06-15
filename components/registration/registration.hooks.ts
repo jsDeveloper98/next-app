@@ -1,5 +1,5 @@
 import { excludeKeys } from "@/helpers";
-import { IRegisterPayload } from "@/services/AuthService";
+import { IRegisterPayload } from "@/services/Auth.service";
 
 import useRegistrationMutation from "./registration.mutations";
 

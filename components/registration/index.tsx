@@ -4,9 +4,9 @@ import Link from "next/link";
 import Form from "@/components/reusable/form";
 import Input from "@/components/reusable/input";
 import Button from "@/components/reusable/button";
+import RuleService from "@/services/Rule.service";
 import { FormItem } from "@/components/reusable/form";
 import useRegistration from "@/components/registration/registration.hooks";
-import { EMAIL_REGEX, PASSWORD_REGEX, USERNAME_REGEX } from "@/constants/regex";
 
 const Registration = () => {
   const { handleFinish } = useRegistration();
@@ -17,18 +17,7 @@ const Registration = () => {
         <FormItem
           name="username"
           label="Username"
-          rules={{
-            required: true,
-            minLength: {
-              value: 5,
-              message: `Username must be at least 5 characters long.`,
-            },
-            pattern: {
-              value: USERNAME_REGEX,
-              message:
-                "Username can only use letters, numbers, underscores, and periods.",
-            },
-          }}
+          rules={RuleService.getRules("username")}
         >
           <Input />
         </FormItem>
@@ -36,27 +25,14 @@ const Registration = () => {
         <FormItem
           name="email"
           label="Email"
-          rules={{
-            required: true,
-            pattern: {
-              value: EMAIL_REGEX,
-              message: "Email is not valid",
-            },
-          }}
+          rules={RuleService.getRules("email")}
         >
           <Input />
         </FormItem>
         <FormItem
           name="password"
           label="Password"
-          rules={{
-            required: true,
-            pattern: {
-              value: PASSWORD_REGEX,
-              message:
-                "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:",
-            },
-          }}
+          rules={RuleService.getRules("password")}
         >
           <Input />
         </FormItem>
@@ -64,7 +40,7 @@ const Registration = () => {
         <FormItem
           name="repeatPassword"
           label="Repeat password"
-          rules={{ match: "password" }}
+          rules={RuleService.getRules("repeatPassword")}
         >
           <Input />
         </FormItem>

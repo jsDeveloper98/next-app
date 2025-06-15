@@ -1,4 +1,4 @@
-import api from "./httpService";
+import api from "./Api.service";
 
 export interface IRegisterPayload {
   email: string;
@@ -16,8 +16,8 @@ export interface IRegisterResponse {
   };
 }
 
-class AuthS {
-  async register(payload: IRegisterPayload) {
+class AuthService {
+  static async register(payload: IRegisterPayload) {
     const response = await api.post<IRegisterResponse>(
       "auth/register",
       payload
@@ -26,7 +26,5 @@ class AuthS {
     return response.data;
   }
 }
-
-const AuthService = new AuthS();
 
 export default AuthService;

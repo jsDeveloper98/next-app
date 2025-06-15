@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import AuthService, {
   IRegisterPayload,
   IRegisterResponse,
-} from "@/services/AuthService";
+} from "@/services/Auth.service";
 
 const useRegistrationMutation = () => {
   const router = useRouter();
